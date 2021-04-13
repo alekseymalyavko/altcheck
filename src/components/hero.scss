@@ -1,0 +1,21 @@
+.hero {
+  padding: 61px 0 127px;
+  margin: 0 0 82px;
+  &-title {
+    max-width: 888px;
+  }
+  &-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    &-item {
+      max-width: 612px;
+
+      h5 {
+        margin-bottom: 21px;
+      }
+    }
+  }
+
+}
