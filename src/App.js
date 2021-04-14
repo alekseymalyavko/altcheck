@@ -1,5 +1,6 @@
 import Header from './components/header';
 import Hero from './components/hero';
+import Table from './components/table';
 import Contact from './components/contact';
 import Footer from './components/footer';
 
@@ -9,11 +10,7 @@ function App() {
       <Header/>      
       <main>
         <Hero/>
-        <section className="table">
-          <div className="container">
-            TABLE          
-          </div>
-        </section>
+        <Table/>
         <Contact/>
       </main>
       <Footer/>

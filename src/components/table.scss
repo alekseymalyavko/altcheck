@@ -1,0 +1,30 @@
+.table {
+  &-wrapper {
+
+  }
+  &-row {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #4E525E;
+    transition: 0.3s;
+    &.table-header {
+      background: #343946;
+      border-color: #343946;
+    }
+    &:not(.table-header):hover {
+      background: #2a2e3a;
+    }
+    & > div {
+      flex: 1;
+    }
+
+  }
+  &-col {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+  &-body {
+    border: 1px solid #4E525E;
+  }
+}

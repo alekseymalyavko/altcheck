@@ -13,6 +13,7 @@ code {
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 :root {
   --primary: #0788FF;
@@ -100,20 +101,46 @@ strong {
   background: transparent;
   border: 1px solid #FFFFFF;
 }
+.button.small {
+  background: var(--dark);
+  font-size: 12px;
+  padding: 3px 4px;
+  border: 1px solid transparent;
+}
 .button:hover {
   background: var(--primary);
   border: 1px solid transparent;
 }
 .container {
   width: 100%;
-  max-width: 1344px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 48px;
 }
 
-@media screen and (max-width: 1440px) {
-
-}
-@media screen and (max-width: 1024px) {
-
+@media screen and (max-width: 720px) {
+  h1, .heading-1 {
+    font-weight: 500;
+    font-size: 38px;
+    line-height: 49px;
+  }
+  h2, .heading-2 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+  }
+  p {
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .button {
+    font-size: 15px;
+  }
+  .large {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }
