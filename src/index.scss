@@ -117,6 +117,27 @@ strong {
   margin: 0 auto;
   padding: 0 48px;
 }
+.up {
+  p, span {
+    color: var(--green);
+  }
+  svg path {
+    fill: var(--green);
+  }
+}
+.down {
+  p, span {
+    color: var(--red);
+  }
+  svg {
+    transform: rotate(180deg);
+    path {
+      fill: var(--red);
+    }
+  }
+}
+
+
 
 @media screen and (max-width: 720px) {
   h1, .heading-1 {

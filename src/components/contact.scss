@@ -41,10 +41,11 @@
 
         &:focus,
         &:active {
-          border-color: var(--primary)
-        }
-        &:invalid {
-          border-color: var(--red)
+          border-color: var(--primary);
+
+          &:invalid {
+            border-color: var(--red)
+          }
         }
       }
       &[type="submit"] {
