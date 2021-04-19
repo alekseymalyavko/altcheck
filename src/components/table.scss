@@ -1,28 +1,39 @@
 .table {
-  &-wrapper {
+  position: relative;
+  border: 1px solid #4E525E;
+  color: #D4D3D7;
+  display: flex;
+  overflow: hidden;
 
+  &-wrapper {
+    padding-bottom: 85px;
   }
   &-row {
     display: flex;
-    padding: 20px 0;
-    border-bottom: 1px solid #4E525E;
+    width: 100%;
     transition: 0.3s;
+    height: 56px;
+    
+    & > div {
+      flex: 1 1;
+      min-width: 135px;
+    }
     &.table-header {
-      background: #343946;
-      border-color: #343946;
+      .table-col {
+        background: #343946;
+        border-color: #343946;
+      }
     }
     &:not(.table-header):hover {
       background: #2a2e3a;
     }
-    & > div {
-      flex: 1;
-    }
-
   }
   &-col {
     padding: 0 20px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #4E525E;
+
     span {
       &:not(:first-child) {
         margin-left: 8px;
@@ -33,8 +44,17 @@
       height: 28px;
       border-radius: 50%;
     }
-    &.name {
-      flex: 2;
+    &.col-1 {
+      // flex: 2;
+      min-width: 200px;
+    }
+    &.col-2 {
+      // flex: 2;
+      min-width: 300px;
+    }
+    &.col-3 {
+      // flex: 3;
+      min-width: 200px;
     }
     .symbol {
       color: #7D7C87;
@@ -42,51 +62,21 @@
     }
   }
   &-body {
-    border: 1px solid #4E525E;
-    color: #D4D3D7;
+    width: 100%;
+    min-width: 400px;
+    overflow-x: auto;
   }
-}
-
-.info {
-  display: inline-block;
-  position: relative;
-  &-wrapper {
-    position: relative;
-    padding: 12px;
-
-    span {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 8px;
-      color: #fff;
-      background: var(--primary);
-    }
-    &:hover {
-      .info-text {
-        visibility: visible;
-        opacity: 1;
-        z-index: 2;
-      }
-    }
+  &-column {
+    width: 250px;
   }
-  
-  &-text {
-    width: 200px;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);    
-    color: #fff;
-    padding: 12px;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s;
-    box-shadow: 2px 2px 16px 4px #0000006b;
+
+  &.full-size {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #23262E;
+    z-index: 2;
   }
 }

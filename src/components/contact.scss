@@ -1,9 +1,13 @@
 .contact {
+  border-top: 2px solid var(--primary);
   padding: 107px 0;
   min-height: 380px;
   display: flex;
   align-items: center;
-  // background-image: url("/images/contact-bg.png");
+  background-image: url('../contact-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   .container {
     display: flex;
     flex-wrap: wrap;

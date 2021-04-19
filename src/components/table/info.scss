@@ -1,0 +1,43 @@
+.info {
+  display: inline-block;
+  position: relative;
+  &-wrapper {
+    position: relative;
+    padding: 12px;
+
+    span {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 8px;
+      color: #fff;
+      background: var(--primary);
+    }
+    &:hover {
+      .info-text {
+        visibility: visible;
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+  }
+  
+  &-text {
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);    
+    color: #fff;
+    padding: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    box-shadow: 2px 2px 16px 4px #0000006b;
+  }
+}

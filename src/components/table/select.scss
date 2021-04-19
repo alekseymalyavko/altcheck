@@ -1,0 +1,40 @@
+
+.select {
+  width: 100%;
+  text-transform: uppercase;
+  position: relative;
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    cursor: pointer;
+  }
+  svg {
+    margin-left: 10px;
+  }
+  &-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    .open & {
+      display: block;
+    } 
+    .select-item {
+      background: #343946;
+
+      &:hover {
+        background: var(--primary);
+      }
+    }
+  }
+  &.open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}

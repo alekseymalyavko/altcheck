@@ -1,0 +1,51 @@
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #343946;
+  width: 100%;
+  max-width: 644px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 25px;
+  z-index: 3;
+
+  p, span {
+    font-size: 12px;
+  }
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+  &-size {
+    span {
+      margin-right: 10px;
+    }
+  }
+  &-field {
+    display: flex;
+    padding: 0 16px;
+
+    span {
+      font-size: 14px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      transition: 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--primary)
+      }
+    }
+
+  }
+}

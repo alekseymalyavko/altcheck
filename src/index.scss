@@ -117,6 +117,9 @@ strong {
   margin: 0 auto;
   padding: 0 48px;
 }
+svg {
+  cursor: pointer;
+}
 .up {
   p, span {
     color: var(--green);
