@@ -78,6 +78,7 @@
     width: 100%;
     min-width: 400px;
     overflow-x: auto;
+    overflow-y: hidden;
   }
   &-column {
     width: 250px;
@@ -91,5 +92,13 @@
     height: 100%;
     background: #23262E;
     z-index: 2;
+    overflow: auto;
+
+    .table-body {
+      overflow: initial; 
+    }
+    .pagination {
+      position: fixed;
+    }
   }
 }

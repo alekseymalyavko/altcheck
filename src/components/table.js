@@ -159,6 +159,8 @@ class Table extends React.Component {
                   <div className="table-col">NO DATA</div>
                 </div>
               }
+              
+            </div>
               { 
                 this.state.data.length > 0 && 
                 <Pagination 
@@ -166,8 +168,6 @@ class Table extends React.Component {
                   handleFullSize={ e => this.handleFullSize(e)}
                 />
               }
-            </div>
-
           </div>
         </div>
       </section>
