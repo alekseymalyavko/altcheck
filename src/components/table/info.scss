@@ -39,5 +39,11 @@
     opacity: 0;
     transition: 0.3s;
     box-shadow: 2px 2px 16px 4px #0000006b;
+
+    p {
+      font-size: 14px;
+      text-transform: none;
+      white-space: normal !important;
+    }
   }
 }

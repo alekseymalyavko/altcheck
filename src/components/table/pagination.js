@@ -5,12 +5,18 @@ class Pagination extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFullSize: false,
+      currentPage: 1,
+      pages: [
+        
+      ]
     }
   }
 
   handleState(e) {
     this.props.handleFullSize(e)
+  }
+  handleArrows(e) {
+
   }
 
   
@@ -23,18 +29,27 @@ class Pagination extends React.Component {
           </span>
         </div>
         <div className="pagination-wrapper">
-          <span className="pagination-arrow">{'<'}</span>
+          <div className="pagination-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+              <path d="M17.7071 8.25102C18.0976 8.58576 18.0976 9.12847 17.7071 9.4632L12.4142 14L17.7071 18.5367C18.0976 18.8715 18.0976 19.4142 17.7071 19.7489C17.3166 20.0837 16.6834 20.0837 16.2929 19.7489L10.2929 14.6061C9.90237 14.2713 9.90237 13.7286 10.2929 13.3939L16.2929 8.25102C16.6834 7.91629 17.3166 7.91629 17.7071 8.25102Z" fill="#F4F4F5"/>
+            </svg>
+          </div>
           <div className="pagination-field">
+
             <span className="pagination-field-item">1</span>
             <span className="pagination-field-item">2</span>
             <span className="pagination-field-item">3</span>
 
           </div>
-          <span className="pagination-arrow">{'>'}</span>
+          <div className="pagination-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+              <path d="M10.2929 8.25111C10.6834 7.91638 11.3166 7.91638 11.7071 8.25111L17.7071 13.394C18.0976 13.7287 18.0976 14.2714 17.7071 14.6062L11.7071 19.749C11.3166 20.0837 10.6834 20.0837 10.2929 19.749C9.90237 19.4143 9.90237 18.8716 10.2929 18.5368L15.5858 14.0001L10.2929 9.4633C9.90237 9.12856 9.90237 8.58585 10.2929 8.25111Z" fill="#F4F4F5"/>
+            </svg>
+          </div>
         </div>
         <div className="pagination-size">
           <span>
-            maximize  
+            { this.props.isFullSize ? 'minimize' : 'maximize'}
           </span>
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"  onClick={e => this.handleState(e) }>
             <rect opacity="0.7" width="28" height="28" fill="#0788FF"/>
