@@ -117,6 +117,10 @@ strong {
   margin: 0 auto;
   padding: 0 48px;
 }
+*:disabled {
+  cursor: no-drop;
+  opacity: 0.8;
+}
 svg {
   cursor: pointer;
 }

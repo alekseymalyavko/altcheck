@@ -17,18 +17,21 @@ class Contact extends React.Component {
       email: e.target.value
     });
   }
-  async sendEmail(email) {
-    const result = await HTTP.post('/');
-    result && this.setState({
+  async sendEmail() {
+    // const email = this.state.email;
+
+    // const result = await HTTP.post('/mail', {
+    //   mail: email
+    // });
+    // result && 
+    this.setState({
       email: '',
       isSent: true
     });
-    // console.log(result)
   }
   submitForm(e) {
     e.preventDefault();
-    const email = this.state.email;
-    this.sendEmail(email);
+    this.sendEmail();
   }
 
   render() {
@@ -46,6 +49,7 @@ class Contact extends React.Component {
           <div className="contact-form">
             <form name="contact-form" onSubmit={ e => this.submitForm(e)}>
               <input 
+                name="mail"
                 type="email" 
                 placeholder="Email"
                 value={ this.state.email }
@@ -56,6 +60,7 @@ class Contact extends React.Component {
               <input 
                 className="button" 
                 type="submit" 
+                disabled={ this.state.isSent }
                 value={this.state.isSent ? 'Sent' : 'Send'}
               />
             </form>

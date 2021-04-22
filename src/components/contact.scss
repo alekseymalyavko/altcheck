@@ -43,12 +43,14 @@
         width: 430px;
         margin-right: 26px;
 
-        &:focus,
-        &:active {
-          border-color: var(--primary);
+        &:not(:disabled) {
+          &:focus,
+          &:active {
+            border-color: var(--primary);
 
-          &:invalid {
-            border-color: var(--red)
+            &:invalid {
+              border-color: var(--red)
+            }
           }
         }
       }
