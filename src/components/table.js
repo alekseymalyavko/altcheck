@@ -30,6 +30,7 @@ class Table extends React.Component {
       isFullSize: false,
       data: [],
       params: {
+        count: 20,
         from: 0,
         size: 20,
         order: 'desc',
@@ -66,6 +67,21 @@ class Table extends React.Component {
     this.setState({
       [field]: data
     })
+  }
+
+  async handlePagination(e) {
+    const from = e * this.state.params.size + (e === 0 ? 0 : 1);
+    const newCount = from + this.state.params.size;
+
+    await this.setState(prevState => ({
+      params: {
+        ...prevState.params,
+        from: from,
+        count: newCount,
+      }
+    }))
+
+    this.getData();
   }
 
   componentWillMount() {
@@ -164,8 +180,10 @@ class Table extends React.Component {
               { 
                 this.state.data.length > 0 && 
                 <Pagination 
-                  isFullSize={this.state.isFullSize}
+                  data={ this.state.params }
+                  isFullSize={ this.state.isFullSize }
                   handleFullSize={ e => this.handleFullSize(e)}
+                  handlePagination={ e => this.handlePagination(e)}
                 />
               }
           </div>

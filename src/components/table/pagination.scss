@@ -1,5 +1,5 @@
 
-.pagination {
+.с-pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,10 +28,11 @@
       margin-right: 10px;
     }
   }
-  &-field {
+  .pagination {
     display: flex;
+    list-style: none;
 
-    span {
+    li {
       font-size: 14px;
       width: 28px;
       height: 28px;
@@ -41,13 +42,37 @@
       margin-right: 10px;
       transition: 0.2s;
       cursor: pointer;
-
-      &:hover {
-        background: var(--primary)
+      
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &:not(.break-me) {
+        &.active,
+        &:hover {
+          background: var(--primary)
+        }
+      }
+      &.disabled {
+        opacity: 0;
+        visibility: hidden;
       }
     }
   }
-  & &-wrapper {
-    align-items: flex-start;
+  @media screen and (max-width: 720px) {
+    padding: 0 10px;
+    &-size {
+      span {
+        display: none;
+      }
+    }
+    .pagination li {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
   }
 }

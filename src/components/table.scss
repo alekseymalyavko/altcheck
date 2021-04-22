@@ -76,7 +76,6 @@
   }
   &-body {
     width: 100%;
-    min-width: 400px;
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -97,8 +96,29 @@
     .table-body {
       overflow: initial; 
     }
-    .pagination {
+    .с-pagination {
       position: fixed;
+    }
+  }
+  @media screen and (max-width: 720px) {
+    &-wrapper {
+      .container {
+        padding: 0;
+      }
+    }
+    &-column {
+      width: 200px;
+
+      .header-col .table-col {
+        box-shadow: 3px 0px 4px 0px #0000008c;
+      }
+    }
+    &-col {
+      padding: 0 10px;
+
+      span:not(:first-child) {
+        margin-left: 5px;
+      }
     }
   }
 }
