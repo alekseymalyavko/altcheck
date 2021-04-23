@@ -18,14 +18,11 @@ class Contact extends React.Component {
     });
   }
   async sendEmail() {
-    // const email = this.state.email;
-
-    // const result = await HTTP.post('/mail', {
-    //   mail: email
-    // });
-    // result && 
-    this.setState({
-      email: '',
+    const email = this.state.email;
+    const result = await HTTP.post('/send_mail', {
+      recevier: email
+    });
+    result && this.setState({
       isSent: true
     });
   }
