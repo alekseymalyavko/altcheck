@@ -2,7 +2,6 @@
   position: relative;
   border: 1px solid #4E525E;
   color: #D4D3D7;
-  display: flex;
   overflow: hidden;
 
   &-wrapper {
@@ -74,13 +73,34 @@
       margin-left: 12px;
     }
   }
+  &-header{
+    display: flex;
+
+    .row-name {
+      min-width: 250px;
+      max-width: 250px;
+      z-index: 4;
+    }
+    .row-sroll {
+      position: relative;
+      transition: none;
+    }
+  }
+  &-content {
+    display: flex;
+    overflow: auto;
+    max-height: 70vh;
+  }
   &-body {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    height: max-content;
   }
   &-column {
-    width: 250px;
+    background: #23262E;
+    min-width: 250px;
+    z-index: 3;
   }
 
   &.full-size {
@@ -93,8 +113,12 @@
     z-index: 2;
     overflow: auto;
 
+    .table-content {
+      max-height: calc(99vh - 56px);
+    }
     .table-body {
-      overflow: initial; 
+      // overflow: initial;
+      height: max-content;
     }
     .с-pagination {
       position: fixed;
@@ -106,15 +130,20 @@
         padding: 0;
       }
     }
+    &-header{
+      .row-name {
+        min-width: 200px;
+      }
+    }
     &-column {
-      width: 200px;
+      min-width: 200px;
 
       .header-col .table-col {
         box-shadow: 3px 0px 4px 0px #0000008c;
       }
     }
     &-col {
-      padding: 0 10px;
+      padding: 0 12px;
 
       span:not(:first-child) {
         margin-left: 5px;

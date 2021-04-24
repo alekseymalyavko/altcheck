@@ -42,6 +42,8 @@ class Table extends React.Component {
       watch_count_change: '24h',
       follower_count_change: '24h',
     }
+    this.header = React.createRef();
+    this.table = React.createRef();
   }
 
   async getData() {
@@ -90,8 +92,18 @@ class Table extends React.Component {
     this.getData();
   }
 
+  handleScroll(e) {
+    console.log(e.target.scrollLeft)
+    console.log(this.header)
+    this.header.current.style.left = -e.target.scrollLeft + 'px'
+    
+  }
   componentWillMount() {
     this.getData();
+  }
+
+  componentDidMount() {
+    console.log(this.header)
   }
 
   render() {
@@ -100,34 +112,13 @@ class Table extends React.Component {
         <div className="container">
           <div className={`table ${this.state.isFullSize ? 'full-size' : ''}`}>
 
-            <div className="table-column">
-              <div className="table-row table-header">
+            <div className="table-header">
+              <div className="table-row table-header row-name">
                 <div className="table-col">
                   <span>Name</span>
                 </div>
               </div>
-              { 
-                this.state.data && this.state.data.map((item, i) => 
-                  <div className="table-row header-col" key={i}>
-                    <div className="table-col">
-                      <img src="https://picsum.photos/200/300?random=1" alt=""/>
-                      <span className="symbol">{item.symbol}</span>
-                      <span>{item.name}</span>
-                    </div>
-                  </div>
-                )
-              }
-              {
-                this.state.isError && 
-                <div className="table-row header-col">
-                  <div className="table-col"></div>
-                </div>
-              }
-            </div>
-
-            <div className="table-body">
-
-              <div className="table-row table-header">
+              <div className="table-row table-header row-sroll" ref={this.header}>
                 <div className="table-col col-1">
                   <span>Market cap</span><Info/>
                 </div>
@@ -156,25 +147,49 @@ class Table extends React.Component {
                   />
                 </div>
               </div>
+            </div>
+            <div className="table-content">
 
-              {
-                this.state.data && this.state.data.map((item, i) => 
-                  <div className="table-row" key={i}>
-                    <div className="table-col col-1">
-                      <span>{item.market_cap || 'NA'}</span>
+              <div className="table-column">
+                { 
+                  this.state.data && this.state.data.map((item, i) => 
+                    <div className="table-row header-col" key={i}>
+                      <div className="table-col">
+                        <img src="https://picsum.photos/200/300?random=1" alt=""/>
+                        <span className="symbol">{item.symbol}</span>
+                        <span>{item.name}</span>
+                      </div>
                     </div>
-                    <DataField num={item.market_cap_change[this.state.market_cap_change]}/>
-                    <div className="table-col col-2">
-                      <span>{item.watch_count || 'NA'}</span>
-                    </div>
-                    <DataField num={item.watch_count_change[this.state.watch_count_change]}/>
-                    <div className="table-col col-3">
-                      <span>{item.follower_count || 'NA'}</span>
-                    </div>
-                    <DataField num={item.follower_count_change[this.state.follower_count_change]}/>
+                  )
+                }
+                {
+                  this.state.isError && 
+                  <div className="table-row header-col">
+                    <div className="table-col"></div>
                   </div>
-                )
-              }
+                }
+              </div>
+
+              <div className="table-body" onScroll={e => this.handleScroll(e)}>
+                {
+                  this.state.data && this.state.data.map((item, i) => 
+                    <div className="table-row" key={i}>
+                      <div className="table-col col-1">
+                        <span>{item.market_cap || 'NA'}</span>
+                      </div>
+                      <DataField num={item.market_cap_change[this.state.market_cap_change]}/>
+                      <div className="table-col col-2">
+                        <span>{item.watch_count || 'NA'}</span>
+                      </div>
+                      <DataField num={item.watch_count_change[this.state.watch_count_change]}/>
+                      <div className="table-col col-3">
+                        <span>{item.follower_count || 'NA'}</span>
+                      </div>
+                      <DataField num={item.follower_count_change[this.state.follower_count_change]}/>
+                    </div>
+                  )
+                }
+                </div>
             </div>
               { 
                 this.state.data.length > 0 && 
