@@ -1,6 +1,7 @@
 import React from 'react';
 import './contact.scss';
 import { HTTP } from '../utils/request';
+import Loading from'./loading';
 
 class Contact extends React.Component {
   constructor(props) {
@@ -18,12 +19,16 @@ class Contact extends React.Component {
     });
   }
   async sendEmail() {
+    this.setState({
+      loading: true
+    });
     const email = this.state.email;
-    const result = await HTTP.post('/send_mail', {
-      recevier: email
+    const result = await HTTP.post('/send_email', {
+      receiver: email
     });
     result && this.setState({
-      isSent: true
+      isSent: true,
+      loading: false
     });
   }
   submitForm(e) {
@@ -54,12 +59,17 @@ class Contact extends React.Component {
                 disabled={ this.state.isSent }
                 required
               />
-              <input 
-                className="button" 
-                type="submit" 
-                disabled={ this.state.isSent }
-                value={this.state.isSent ? 'Sent' : 'Send'}
-              />
+              <span className="submit_wrapper">
+                { this.state.loading &&
+                  <Loading/>
+                }
+                <input 
+                  className="button" 
+                  type="submit" 
+                  disabled={ this.state.isSent }
+                  value={this.state.loading ? '' : (this.state.isSent ? 'Sent' : 'Send')}
+                />
+              </span>
             </form>
           </div>
         </div>

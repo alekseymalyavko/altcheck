@@ -46,7 +46,10 @@ class Table extends React.Component {
 
   async getData() {
     try {
-      const response = await HTTP.get('/report', { params: this.state.params });
+      const params = { ...this.state.params };
+      delete params.count;
+
+      const response = await HTTP.get('/report', { params });
       this.setState({
         data: response.data
       })
@@ -58,6 +61,9 @@ class Table extends React.Component {
   }
 
   handleFullSize() {
+    const action = !this.state.isFullSize ? 'add' : 'remove';
+    document.body.classList[action]('hidden');
+
     this.setState({
       isFullSize: !this.state.isFullSize
     })
@@ -132,7 +138,7 @@ class Table extends React.Component {
                   />
                 </div>
                 <div className="table-col col-2">
-                  <span>Coinmarketcap watch count</span><Info/>
+                  <span>CMC watch count</span><Info/>
                 </div>
                 <div className="table-col">
                   <Select 
@@ -169,13 +175,6 @@ class Table extends React.Component {
                   </div>
                 )
               }
-              {
-                this.state.isError && 
-                <div className="table-row header-col error">
-                  <div className="table-col">NO DATA</div>
-                </div>
-              }
-              
             </div>
               { 
                 this.state.data.length > 0 && 
@@ -185,6 +184,13 @@ class Table extends React.Component {
                   handleFullSize={ e => this.handleFullSize(e)}
                   handlePagination={ e => this.handlePagination(e)}
                 />
+              }
+
+              {
+                (this.state.isError || !this.state.data.length) && 
+                <div className="table-note">
+                  NO DATA
+                </div>
               }
           </div>
         </div>

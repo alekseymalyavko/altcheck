@@ -24,6 +24,9 @@
     display: flex;
     align-items: center;
 
+    .submit_wrapper {
+      position: relative;
+    }
     form {
       display: flex;
       flex-wrap: wrap;
@@ -73,6 +76,9 @@
     }
     &-form {
       width: 100%;
+      .submit_wrapper {
+        width: 100%;
+      }
       form {
         width: 100%;
       }

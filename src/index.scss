@@ -29,6 +29,9 @@ body {
   background: var(--dark);
   text-align: left;
 }
+.hidden {
+  overflow: hidden;
+}
 h1, .heading-1 {
   font-weight: 600;
   font-size: 72px;
@@ -143,8 +146,19 @@ svg {
     }
   }
 }
-
-
+.loading {
+  animation: spin 2s linear infinite;
+}
+.loading_wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 @media screen and (max-width: 720px) {
   h1, .heading-1 {
