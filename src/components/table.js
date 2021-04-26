@@ -22,6 +22,43 @@ function DataField(props) {
   );
 }
 
+class Heading extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      item: props.item,
+      loaded: false
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.item.slug !== nextProps.item.slug) {
+      this.setState({
+        loaded: false,
+        item: nextProps.item
+      })
+    }    
+  }
+
+  render(){
+    return (
+      <div className="table-row header-col">
+        <div className="table-col">
+          <div className={`alt-logo ${this.state.loaded ? 'loaded' : ''}`}>
+            <img 
+              src={`http://altcheck.org/logo/${this.props.item.slug}`} 
+              alt={this.props.item.slug}
+              onLoad={(e) => this.setState({loaded: true})}
+            />
+          </div>
+          <span className="symbol">{this.state.item.symbol}</span>
+          <span>{this.state.item.name}</span>
+        </div>
+      </div>
+    );
+  }
+}
+
 class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -146,13 +183,7 @@ class Table extends React.Component {
               <div className="table-column">
                 { 
                   this.state.data && this.state.data.map((item, i) => 
-                    <div className="table-row header-col" key={i}>
-                      <div className="table-col">
-                        <img src={`http://altcheck.org/logo/${item.slug}`} alt=""/>
-                        <span className="symbol">{item.symbol}</span>
-                        <span>{item.name}</span>
-                      </div>
-                    </div>
+                    <Heading item={item} key={i}/>
                   )
                 }
               </div>

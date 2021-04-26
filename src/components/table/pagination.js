@@ -19,9 +19,11 @@ class Pagination extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      data: this.props.data
-    })
+    if (this.state.data.from !== nextProps.data.from) {
+      this.setState({
+        data: this.props.data
+      })
+    }
   }
 
   render() {

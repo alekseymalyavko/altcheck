@@ -51,10 +51,22 @@
         margin-left: 8px;
       }
     }
-    img {
+    .alt-logo {
       width: 28px;
       height: 28px;
       border-radius: 50%;
+      background: #343946;    
+      overflow: hidden;
+
+      &.loaded {
+        img {
+          visibility: visible;
+        }
+      }
+      img {
+        visibility: hidden;
+        width: 100%;
+      }
     }
     &.col-1 {
       // flex: 2;
