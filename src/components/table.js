@@ -43,7 +43,6 @@ class Table extends React.Component {
       follower_count_change: '24h',
     }
     this.header = React.createRef();
-    this.table = React.createRef();
   }
 
   async getData() {
@@ -93,17 +92,11 @@ class Table extends React.Component {
   }
 
   handleScroll(e) {
-    console.log(e.target.scrollLeft)
-    console.log(this.header)
-    this.header.current.style.left = -e.target.scrollLeft + 'px'
+    this.header.current.style.left = -e.target.scrollLeft + 'px';
     
   }
   componentWillMount() {
     this.getData();
-  }
-
-  componentDidMount() {
-    console.log(this.header)
   }
 
   render() {
@@ -155,18 +148,12 @@ class Table extends React.Component {
                   this.state.data && this.state.data.map((item, i) => 
                     <div className="table-row header-col" key={i}>
                       <div className="table-col">
-                        <img src="https://picsum.photos/200/300?random=1" alt=""/>
+                        <img src={`http://altcheck.org/logo/${item.slug}`} alt=""/>
                         <span className="symbol">{item.symbol}</span>
                         <span>{item.name}</span>
                       </div>
                     </div>
                   )
-                }
-                {
-                  this.state.isError && 
-                  <div className="table-row header-col">
-                    <div className="table-col"></div>
-                  </div>
                 }
               </div>
 

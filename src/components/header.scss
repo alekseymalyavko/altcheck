@@ -21,7 +21,8 @@
       opacity: 0;
       visibility: hidden;
       transition: 0.3s;
-
+      z-index: 9;
+      
       &.active {
         opacity: 1;
         visibility: visible;

@@ -24,14 +24,16 @@ class Header extends React.Component {
         }
       ],
       isOpen: false
+    };
+    this.form = React.createRef();
     }
-  }
 
   copyItem(item) {
     navigator.clipboard.writeText(item);
   }
 
   handleClick() {
+    setTimeout(() => this.state.isOpen && this.form.current.focus(), 500)
     this.setState({
       isOpen: !this.state.isOpen
     })
@@ -44,7 +46,7 @@ class Header extends React.Component {
           <div className="donate-container">
             <button className="button secondary" onClick={ e => this.handleClick() }>Donate</button>
             
-            <div className={`donate-form ${this.state.isOpen ? 'active' : ''}`}>
+            <div className={`donate-form ${this.state.isOpen ? 'active' : ''}`} ref={this.form} tabIndex="0" onBlur={ e => this.handleClick() }>
               <h4>Your support means a lot!</h4>
               <div className="donate-items">
                 {
@@ -56,7 +58,7 @@ class Header extends React.Component {
                       <div>
                         <div className="donate-item-field">
                           <span className="small">{ item.code }</span>
-                          <button className="button small" onClick={ e => this.copyItem(item.code) }>Copy</button>
+                          <div className="button small" onClick={ e => this.copyItem(item.code) }>Copy</div>
                         </div>
                       </div>
                     </div>
