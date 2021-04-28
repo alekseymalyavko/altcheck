@@ -26,15 +26,19 @@ class Header extends React.Component {
       isOpen: false
     };
     this.form = React.createRef();
-    this.btn = React.createRef();
   }
 
-  copyItem(item) {
-    navigator.clipboard.writeText(item);
+  copyItem(e) {
+    const input = e.target.parentElement.children[0];
+    input.focus();
+    input.select();
+    input.setSelectionRange(0, 999);
+    document.execCommand('copy');
+    // document.getSelection().removeAllRanges();
   }
 
   handleOutSideClick(e) {
-    if (e.relatedTarget === this.btn.current) {
+    if (e.relatedTarget && e.relatedTarget.classList.contains('inside')) {
       return
     } else {
       this.setState({
@@ -44,7 +48,7 @@ class Header extends React.Component {
   }
 
   handleClick(e) {   
-    setTimeout(() => this.state.isOpen && this.form.current.focus(), 300)
+    setTimeout(() => this.state.isOpen && this.form.current.focus())
     this.setState({
       isOpen: !this.state.isOpen
     })
@@ -55,9 +59,9 @@ class Header extends React.Component {
       <header className="header">
         <div className="container">
           <div className="donate-container">
-            <button className="button secondary" ref={ this.btn } onClick={ e => this.handleClick(e) }>Donate</button>
+            <button className="button secondary inside" onClick={ e => this.handleClick(e) }>Donate</button>
             
-            <div className={`donate-form ${this.state.isOpen ? 'active' : ''}`} ref={ this.form } tabIndex="0" onBlur={ e => this.handleOutSideClick(e) }>
+            <div className={`donate-form inside ${this.state.isOpen ? 'active' : ''}`} ref={ this.form } tabIndex="0" onBlur={ e => this.handleOutSideClick(e) }>
               <h4>Your support means a lot!</h4>
               <div className="donate-items">
                 {
@@ -68,8 +72,10 @@ class Header extends React.Component {
                       </h5>
                       <div>
                         <div className="donate-item-field">
-                          <span className="small">{ item.code }</span>
-                          <div className="button small" onClick={ e => this.copyItem(item.code) }>Copy</div>
+                          <input className="small inside" readOnly type="text" defaultValue={ item.code }/>
+                          <button className="button small inside" onClick={ e => this.copyItem(e) }>
+                            Copy
+                          </button>
                         </div>
                       </div>
                     </div>
