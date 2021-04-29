@@ -48,7 +48,7 @@ class Header extends React.Component {
   }
 
   handleClick(e) {   
-    setTimeout(() => this.state.isOpen && this.form.current.focus())
+    setTimeout(() => this.state.isOpen && this.form.current.focus(), 100)
     this.setState({
       isOpen: !this.state.isOpen
     })
